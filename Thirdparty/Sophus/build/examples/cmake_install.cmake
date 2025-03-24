@@ -1,4 +1,4 @@
-# Install script for directory: /home/cwr/ORB_SLAM3/Thirdparty/Sophus/examples
+# Install script for directory: /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/examples
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,6 +45,6 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/examples/install_local_manifest.txt"
+  file(WRITE "/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/examples/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

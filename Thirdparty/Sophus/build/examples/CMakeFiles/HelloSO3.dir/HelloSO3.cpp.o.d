@@ -1,5 +1,5 @@
 examples/CMakeFiles/HelloSO3.dir/HelloSO3.cpp.o: \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/examples/HelloSO3.cpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/examples/HelloSO3.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -149,9 +149,9 @@ examples/CMakeFiles/HelloSO3.dir/HelloSO3.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/geometry.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/se2.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/so2.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/geometry.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/se2.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/so2.hpp \
  /usr/include/c++/11/complex /usr/include/c++/11/cmath \
  /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -329,7 +329,7 @@ examples/CMakeFiles/HelloSO3.dir/HelloSO3.cpp.o: \
  /usr/include/eigen3/Eigen/src/LU/Determinant.h \
  /usr/include/eigen3/Eigen/src/LU/InverseImpl.h \
  /usr/include/eigen3/Eigen/src/LU/arch/InverseSize4.h \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/rotation_matrix.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/rotation_matrix.hpp \
  /usr/include/eigen3/Eigen/Dense /usr/include/eigen3/Eigen/LU \
  /usr/include/eigen3/Eigen/Cholesky /usr/include/eigen3/Eigen/Jacobi \
  /usr/include/eigen3/Eigen/src/Jacobi/Jacobi.h \
@@ -383,8 +383,8 @@ examples/CMakeFiles/HelloSO3.dir/HelloSO3.cpp.o: \
  /usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
  /usr/include/eigen3/Eigen/SVD \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/types.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/common.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/types.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/common.hpp \
  /usr/include/c++/11/random /usr/include/c++/11/bits/random.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
@@ -393,9 +393,9 @@ examples/CMakeFiles/HelloSO3.dir/HelloSO3.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
  /usr/include/c++/11/bits/random.tcc /usr/include/c++/11/numeric \
  /usr/include/c++/11/bits/stl_numeric.h /usr/include/eigen3/Eigen/Core \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/formatstring.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/se3.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/so3.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/formatstring.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/se3.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/so3.hpp \
  /usr/include/eigen3/Eigen/src/Geometry/OrthoMethods.h \
  /usr/include/eigen3/Eigen/src/Geometry/Quaternion.h \
  /usr/include/eigen3/Eigen/src/Geometry/RotationBase.h

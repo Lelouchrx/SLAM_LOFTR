@@ -51,7 +51,7 @@ add_library(Sophus::Sophus INTERFACE IMPORTED)
 
 set_target_properties(Sophus::Sophus PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_auto_type;cxx_decltype;cxx_nullptr;cxx_right_angle_brackets;cxx_variadic_macros;cxx_variadic_templates"
-  INTERFACE_INCLUDE_DIRECTORIES "/home/cwr/ORB_SLAM3/Thirdparty/Sophus"
+  INTERFACE_INCLUDE_DIRECTORIES "/home/cwr/SLAM_LOFTR/Thirdparty/Sophus"
   INTERFACE_LINK_LIBRARIES "Eigen3::Eigen"
 )
 

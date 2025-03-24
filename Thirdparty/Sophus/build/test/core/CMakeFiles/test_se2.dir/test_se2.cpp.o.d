@@ -1,5 +1,5 @@
 test/core/CMakeFiles/test_se2.dir/test_se2.cpp.o: \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/test/core/test_se2.cpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/test/core/test_se2.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -149,8 +149,8 @@ test/core/CMakeFiles/test_se2.dir/test_se2.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/se2.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/so2.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/se2.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/so2.hpp \
  /usr/include/c++/11/complex /usr/include/c++/11/cmath \
  /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -328,7 +328,7 @@ test/core/CMakeFiles/test_se2.dir/test_se2.cpp.o: \
  /usr/include/eigen3/Eigen/src/LU/Determinant.h \
  /usr/include/eigen3/Eigen/src/LU/InverseImpl.h \
  /usr/include/eigen3/Eigen/src/LU/arch/InverseSize4.h \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/rotation_matrix.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/rotation_matrix.hpp \
  /usr/include/eigen3/Eigen/Dense /usr/include/eigen3/Eigen/LU \
  /usr/include/eigen3/Eigen/Cholesky /usr/include/eigen3/Eigen/Jacobi \
  /usr/include/eigen3/Eigen/src/Jacobi/Jacobi.h \
@@ -382,8 +382,8 @@ test/core/CMakeFiles/test_se2.dir/test_se2.cpp.o: \
  /usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
  /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
  /usr/include/eigen3/Eigen/SVD \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/types.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/common.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/types.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/common.hpp \
  /usr/include/c++/11/random /usr/include/c++/11/bits/random.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
@@ -392,7 +392,7 @@ test/core/CMakeFiles/test_se2.dir/test_se2.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
  /usr/include/c++/11/bits/random.tcc /usr/include/c++/11/numeric \
  /usr/include/c++/11/bits/stl_numeric.h /usr/include/eigen3/Eigen/Core \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/formatstring.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/formatstring.hpp \
  /usr/include/eigen3/unsupported/Eigen/MatrixFunctions \
  /usr/include/c++/11/cfloat \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
@@ -409,26 +409,26 @@ test/core/CMakeFiles/test_se2.dir/test_se2.cpp.o: \
  /usr/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixLogarithm.h \
  /usr/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixPower.h \
  /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/test/core/tests.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/test/core/tests.hpp \
  /usr/include/eigen3/Eigen/StdVector \
  /usr/include/eigen3/Eigen/src/StlSupport/StdVector.h \
  /usr/include/eigen3/Eigen/src/StlSupport/details.h \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/average.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/rxso2.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/rxso3.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/so3.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/average.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/rxso2.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/rxso3.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/so3.hpp \
  /usr/include/eigen3/Eigen/src/Geometry/OrthoMethods.h \
  /usr/include/eigen3/Eigen/src/Geometry/Quaternion.h \
  /usr/include/eigen3/Eigen/src/Geometry/RotationBase.h \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/se2.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/se3.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/sim2.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/sim_details.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/sim3.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/interpolate.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/se2.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/se3.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/sim2.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/sim_details.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/sim3.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/interpolate.hpp \
  /usr/include/eigen3/Eigen/Eigenvalues \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/interpolate_details.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/num_diff.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/test_macros.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/types.hpp \
- /home/cwr/ORB_SLAM3/Thirdparty/Sophus/sophus/formatstring.hpp
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/interpolate_details.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/num_diff.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/test_macros.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/types.hpp \
+ /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/sophus/formatstring.hpp

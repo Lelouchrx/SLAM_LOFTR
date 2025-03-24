@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cwr/ORB_SLAM3/Thirdparty/Sophus
+CMAKE_SOURCE_DIR = /home/cwr/SLAM_LOFTR/Thirdparty/Sophus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build
+CMAKE_BINARY_DIR = /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build
 
 # Utility rule file for other.
 
@@ -81,6 +81,6 @@ CMakeFiles/other.dir/clean:
 .PHONY : CMakeFiles/other.dir/clean
 
 CMakeFiles/other.dir/depend:
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cwr/ORB_SLAM3/Thirdparty/Sophus /home/cwr/ORB_SLAM3/Thirdparty/Sophus /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles/other.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cwr/SLAM_LOFTR/Thirdparty/Sophus /home/cwr/SLAM_LOFTR/Thirdparty/Sophus /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles/other.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/other.dir/depend
 

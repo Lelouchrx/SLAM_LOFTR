@@ -1,4 +1,4 @@
-# Install script for directory: /home/cwr/ORB_SLAM3/Thirdparty/Sophus/test
+# Install script for directory: /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,14 +44,14 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/test/core/cmake_install.cmake")
-  include("/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/test/ceres/cmake_install.cmake")
+  include("/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/test/core/cmake_install.cmake")
+  include("/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/test/ceres/cmake_install.cmake")
 
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/test/install_local_manifest.txt"
+  file(WRITE "/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/test/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

@@ -57,10 +57,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cwr/ORB_SLAM3/Thirdparty/Sophus
+CMAKE_SOURCE_DIR = /home/cwr/SLAM_LOFTR/Thirdparty/Sophus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build
+CMAKE_BINARY_DIR = /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,14 +142,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/examples//CMakeFiles/progress.marks
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/examples//CMakeFiles/progress.marks
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/clean
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/clean
 .PHONY : clean
 
 # The main clean target
@@ -158,22 +158,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 examples/CMakeFiles/HelloSO3.dir/rule:
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/CMakeFiles/HelloSO3.dir/rule
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/CMakeFiles/HelloSO3.dir/rule
 .PHONY : examples/CMakeFiles/HelloSO3.dir/rule
 
 # Convenience name for target.
@@ -182,7 +182,7 @@ HelloSO3: examples/CMakeFiles/HelloSO3.dir/rule
 
 # fast build rule for target.
 HelloSO3/fast:
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/HelloSO3.dir/build.make examples/CMakeFiles/HelloSO3.dir/build
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/HelloSO3.dir/build.make examples/CMakeFiles/HelloSO3.dir/build
 .PHONY : HelloSO3/fast
 
 HelloSO3.o: HelloSO3.cpp.o
@@ -190,7 +190,7 @@ HelloSO3.o: HelloSO3.cpp.o
 
 # target to build an object file
 HelloSO3.cpp.o:
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/HelloSO3.dir/build.make examples/CMakeFiles/HelloSO3.dir/HelloSO3.cpp.o
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/HelloSO3.dir/build.make examples/CMakeFiles/HelloSO3.dir/HelloSO3.cpp.o
 .PHONY : HelloSO3.cpp.o
 
 HelloSO3.i: HelloSO3.cpp.i
@@ -198,7 +198,7 @@ HelloSO3.i: HelloSO3.cpp.i
 
 # target to preprocess a source file
 HelloSO3.cpp.i:
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/HelloSO3.dir/build.make examples/CMakeFiles/HelloSO3.dir/HelloSO3.cpp.i
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/HelloSO3.dir/build.make examples/CMakeFiles/HelloSO3.dir/HelloSO3.cpp.i
 .PHONY : HelloSO3.cpp.i
 
 HelloSO3.s: HelloSO3.cpp.s
@@ -206,7 +206,7 @@ HelloSO3.s: HelloSO3.cpp.s
 
 # target to generate assembly for a file
 HelloSO3.cpp.s:
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/HelloSO3.dir/build.make examples/CMakeFiles/HelloSO3.dir/HelloSO3.cpp.s
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/HelloSO3.dir/build.make examples/CMakeFiles/HelloSO3.dir/HelloSO3.cpp.s
 .PHONY : HelloSO3.cpp.s
 
 # Help Target
@@ -237,6 +237,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

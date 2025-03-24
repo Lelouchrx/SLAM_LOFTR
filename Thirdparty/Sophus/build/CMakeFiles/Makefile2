@@ -54,10 +54,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cwr/ORB_SLAM3/Thirdparty/Sophus
+CMAKE_SOURCE_DIR = /home/cwr/SLAM_LOFTR/Thirdparty/Sophus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build
+CMAKE_BINARY_DIR = /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -200,14 +200,14 @@ test/core/clean: test/core/CMakeFiles/test_geometry.dir/clean
 CMakeFiles/other.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/other.dir/build.make CMakeFiles/other.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/other.dir/build.make CMakeFiles/other.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num= "Built target other"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num= "Built target other"
 .PHONY : CMakeFiles/other.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/other.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/other.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : CMakeFiles/other.dir/rule
 
 # Convenience name for target.
@@ -217,7 +217,7 @@ other: CMakeFiles/other.dir/rule
 # codegen rule for target.
 CMakeFiles/other.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/other.dir/build.make CMakeFiles/other.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num= "Finished codegen for target other"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num= "Finished codegen for target other"
 .PHONY : CMakeFiles/other.dir/codegen
 
 # clean rule for target.
@@ -232,14 +232,14 @@ CMakeFiles/other.dir/clean:
 test/core/CMakeFiles/test_common.dir/all:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_common.dir/build.make test/core/CMakeFiles/test_common.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_common.dir/build.make test/core/CMakeFiles/test_common.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=3,4 "Built target test_common"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=3,4 "Built target test_common"
 .PHONY : test/core/CMakeFiles/test_common.dir/all
 
 # Build rule for subdir invocation for target.
 test/core/CMakeFiles/test_common.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/core/CMakeFiles/test_common.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : test/core/CMakeFiles/test_common.dir/rule
 
 # Convenience name for target.
@@ -249,7 +249,7 @@ test_common: test/core/CMakeFiles/test_common.dir/rule
 # codegen rule for target.
 test/core/CMakeFiles/test_common.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_common.dir/build.make test/core/CMakeFiles/test_common.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=3,4 "Finished codegen for target test_common"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=3,4 "Finished codegen for target test_common"
 .PHONY : test/core/CMakeFiles/test_common.dir/codegen
 
 # clean rule for target.
@@ -264,14 +264,14 @@ test/core/CMakeFiles/test_common.dir/clean:
 test/core/CMakeFiles/test_so2.dir/all:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_so2.dir/build.make test/core/CMakeFiles/test_so2.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_so2.dir/build.make test/core/CMakeFiles/test_so2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=19,20 "Built target test_so2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=19,20 "Built target test_so2"
 .PHONY : test/core/CMakeFiles/test_so2.dir/all
 
 # Build rule for subdir invocation for target.
 test/core/CMakeFiles/test_so2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/core/CMakeFiles/test_so2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : test/core/CMakeFiles/test_so2.dir/rule
 
 # Convenience name for target.
@@ -281,7 +281,7 @@ test_so2: test/core/CMakeFiles/test_so2.dir/rule
 # codegen rule for target.
 test/core/CMakeFiles/test_so2.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_so2.dir/build.make test/core/CMakeFiles/test_so2.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=19,20 "Finished codegen for target test_so2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=19,20 "Finished codegen for target test_so2"
 .PHONY : test/core/CMakeFiles/test_so2.dir/codegen
 
 # clean rule for target.
@@ -296,14 +296,14 @@ test/core/CMakeFiles/test_so2.dir/clean:
 test/core/CMakeFiles/test_se2.dir/all:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_se2.dir/build.make test/core/CMakeFiles/test_se2.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_se2.dir/build.make test/core/CMakeFiles/test_se2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=11,12 "Built target test_se2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=11,12 "Built target test_se2"
 .PHONY : test/core/CMakeFiles/test_se2.dir/all
 
 # Build rule for subdir invocation for target.
 test/core/CMakeFiles/test_se2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/core/CMakeFiles/test_se2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : test/core/CMakeFiles/test_se2.dir/rule
 
 # Convenience name for target.
@@ -313,7 +313,7 @@ test_se2: test/core/CMakeFiles/test_se2.dir/rule
 # codegen rule for target.
 test/core/CMakeFiles/test_se2.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_se2.dir/build.make test/core/CMakeFiles/test_se2.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=11,12 "Finished codegen for target test_se2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=11,12 "Finished codegen for target test_se2"
 .PHONY : test/core/CMakeFiles/test_se2.dir/codegen
 
 # clean rule for target.
@@ -328,14 +328,14 @@ test/core/CMakeFiles/test_se2.dir/clean:
 test/core/CMakeFiles/test_rxso2.dir/all:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_rxso2.dir/build.make test/core/CMakeFiles/test_rxso2.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_rxso2.dir/build.make test/core/CMakeFiles/test_rxso2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=7,8 "Built target test_rxso2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=7,8 "Built target test_rxso2"
 .PHONY : test/core/CMakeFiles/test_rxso2.dir/all
 
 # Build rule for subdir invocation for target.
 test/core/CMakeFiles/test_rxso2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/core/CMakeFiles/test_rxso2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : test/core/CMakeFiles/test_rxso2.dir/rule
 
 # Convenience name for target.
@@ -345,7 +345,7 @@ test_rxso2: test/core/CMakeFiles/test_rxso2.dir/rule
 # codegen rule for target.
 test/core/CMakeFiles/test_rxso2.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_rxso2.dir/build.make test/core/CMakeFiles/test_rxso2.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=7,8 "Finished codegen for target test_rxso2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=7,8 "Finished codegen for target test_rxso2"
 .PHONY : test/core/CMakeFiles/test_rxso2.dir/codegen
 
 # clean rule for target.
@@ -360,14 +360,14 @@ test/core/CMakeFiles/test_rxso2.dir/clean:
 test/core/CMakeFiles/test_sim2.dir/all:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_sim2.dir/build.make test/core/CMakeFiles/test_sim2.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_sim2.dir/build.make test/core/CMakeFiles/test_sim2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=15,16 "Built target test_sim2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=15,16 "Built target test_sim2"
 .PHONY : test/core/CMakeFiles/test_sim2.dir/all
 
 # Build rule for subdir invocation for target.
 test/core/CMakeFiles/test_sim2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/core/CMakeFiles/test_sim2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : test/core/CMakeFiles/test_sim2.dir/rule
 
 # Convenience name for target.
@@ -377,7 +377,7 @@ test_sim2: test/core/CMakeFiles/test_sim2.dir/rule
 # codegen rule for target.
 test/core/CMakeFiles/test_sim2.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_sim2.dir/build.make test/core/CMakeFiles/test_sim2.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=15,16 "Finished codegen for target test_sim2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=15,16 "Finished codegen for target test_sim2"
 .PHONY : test/core/CMakeFiles/test_sim2.dir/codegen
 
 # clean rule for target.
@@ -392,14 +392,14 @@ test/core/CMakeFiles/test_sim2.dir/clean:
 test/core/CMakeFiles/test_so3.dir/all:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_so3.dir/build.make test/core/CMakeFiles/test_so3.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_so3.dir/build.make test/core/CMakeFiles/test_so3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=21,22 "Built target test_so3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=21,22 "Built target test_so3"
 .PHONY : test/core/CMakeFiles/test_so3.dir/all
 
 # Build rule for subdir invocation for target.
 test/core/CMakeFiles/test_so3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/core/CMakeFiles/test_so3.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : test/core/CMakeFiles/test_so3.dir/rule
 
 # Convenience name for target.
@@ -409,7 +409,7 @@ test_so3: test/core/CMakeFiles/test_so3.dir/rule
 # codegen rule for target.
 test/core/CMakeFiles/test_so3.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_so3.dir/build.make test/core/CMakeFiles/test_so3.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=21,22 "Finished codegen for target test_so3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=21,22 "Finished codegen for target test_so3"
 .PHONY : test/core/CMakeFiles/test_so3.dir/codegen
 
 # clean rule for target.
@@ -424,14 +424,14 @@ test/core/CMakeFiles/test_so3.dir/clean:
 test/core/CMakeFiles/test_se3.dir/all:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_se3.dir/build.make test/core/CMakeFiles/test_se3.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_se3.dir/build.make test/core/CMakeFiles/test_se3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=13,14 "Built target test_se3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=13,14 "Built target test_se3"
 .PHONY : test/core/CMakeFiles/test_se3.dir/all
 
 # Build rule for subdir invocation for target.
 test/core/CMakeFiles/test_se3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/core/CMakeFiles/test_se3.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : test/core/CMakeFiles/test_se3.dir/rule
 
 # Convenience name for target.
@@ -441,7 +441,7 @@ test_se3: test/core/CMakeFiles/test_se3.dir/rule
 # codegen rule for target.
 test/core/CMakeFiles/test_se3.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_se3.dir/build.make test/core/CMakeFiles/test_se3.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=13,14 "Finished codegen for target test_se3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=13,14 "Finished codegen for target test_se3"
 .PHONY : test/core/CMakeFiles/test_se3.dir/codegen
 
 # clean rule for target.
@@ -456,14 +456,14 @@ test/core/CMakeFiles/test_se3.dir/clean:
 test/core/CMakeFiles/test_rxso3.dir/all:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_rxso3.dir/build.make test/core/CMakeFiles/test_rxso3.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_rxso3.dir/build.make test/core/CMakeFiles/test_rxso3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=9,10 "Built target test_rxso3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=9,10 "Built target test_rxso3"
 .PHONY : test/core/CMakeFiles/test_rxso3.dir/all
 
 # Build rule for subdir invocation for target.
 test/core/CMakeFiles/test_rxso3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/core/CMakeFiles/test_rxso3.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : test/core/CMakeFiles/test_rxso3.dir/rule
 
 # Convenience name for target.
@@ -473,7 +473,7 @@ test_rxso3: test/core/CMakeFiles/test_rxso3.dir/rule
 # codegen rule for target.
 test/core/CMakeFiles/test_rxso3.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_rxso3.dir/build.make test/core/CMakeFiles/test_rxso3.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=9,10 "Finished codegen for target test_rxso3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=9,10 "Finished codegen for target test_rxso3"
 .PHONY : test/core/CMakeFiles/test_rxso3.dir/codegen
 
 # clean rule for target.
@@ -488,14 +488,14 @@ test/core/CMakeFiles/test_rxso3.dir/clean:
 test/core/CMakeFiles/test_sim3.dir/all:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_sim3.dir/build.make test/core/CMakeFiles/test_sim3.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_sim3.dir/build.make test/core/CMakeFiles/test_sim3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=17,18 "Built target test_sim3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=17,18 "Built target test_sim3"
 .PHONY : test/core/CMakeFiles/test_sim3.dir/all
 
 # Build rule for subdir invocation for target.
 test/core/CMakeFiles/test_sim3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/core/CMakeFiles/test_sim3.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : test/core/CMakeFiles/test_sim3.dir/rule
 
 # Convenience name for target.
@@ -505,7 +505,7 @@ test_sim3: test/core/CMakeFiles/test_sim3.dir/rule
 # codegen rule for target.
 test/core/CMakeFiles/test_sim3.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_sim3.dir/build.make test/core/CMakeFiles/test_sim3.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=17,18 "Finished codegen for target test_sim3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=17,18 "Finished codegen for target test_sim3"
 .PHONY : test/core/CMakeFiles/test_sim3.dir/codegen
 
 # clean rule for target.
@@ -520,14 +520,14 @@ test/core/CMakeFiles/test_sim3.dir/clean:
 test/core/CMakeFiles/test_velocities.dir/all:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_velocities.dir/build.make test/core/CMakeFiles/test_velocities.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_velocities.dir/build.make test/core/CMakeFiles/test_velocities.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=23,24 "Built target test_velocities"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=23,24 "Built target test_velocities"
 .PHONY : test/core/CMakeFiles/test_velocities.dir/all
 
 # Build rule for subdir invocation for target.
 test/core/CMakeFiles/test_velocities.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/core/CMakeFiles/test_velocities.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : test/core/CMakeFiles/test_velocities.dir/rule
 
 # Convenience name for target.
@@ -537,7 +537,7 @@ test_velocities: test/core/CMakeFiles/test_velocities.dir/rule
 # codegen rule for target.
 test/core/CMakeFiles/test_velocities.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_velocities.dir/build.make test/core/CMakeFiles/test_velocities.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=23,24 "Finished codegen for target test_velocities"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=23,24 "Finished codegen for target test_velocities"
 .PHONY : test/core/CMakeFiles/test_velocities.dir/codegen
 
 # clean rule for target.
@@ -552,14 +552,14 @@ test/core/CMakeFiles/test_velocities.dir/clean:
 test/core/CMakeFiles/test_geometry.dir/all:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_geometry.dir/build.make test/core/CMakeFiles/test_geometry.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_geometry.dir/build.make test/core/CMakeFiles/test_geometry.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=5,6 "Built target test_geometry"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=5,6 "Built target test_geometry"
 .PHONY : test/core/CMakeFiles/test_geometry.dir/all
 
 # Build rule for subdir invocation for target.
 test/core/CMakeFiles/test_geometry.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/core/CMakeFiles/test_geometry.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : test/core/CMakeFiles/test_geometry.dir/rule
 
 # Convenience name for target.
@@ -569,7 +569,7 @@ test_geometry: test/core/CMakeFiles/test_geometry.dir/rule
 # codegen rule for target.
 test/core/CMakeFiles/test_geometry.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f test/core/CMakeFiles/test_geometry.dir/build.make test/core/CMakeFiles/test_geometry.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=5,6 "Finished codegen for target test_geometry"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=5,6 "Finished codegen for target test_geometry"
 .PHONY : test/core/CMakeFiles/test_geometry.dir/codegen
 
 # clean rule for target.
@@ -584,14 +584,14 @@ test/core/CMakeFiles/test_geometry.dir/clean:
 examples/CMakeFiles/HelloSO3.dir/all:
 	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/HelloSO3.dir/build.make examples/CMakeFiles/HelloSO3.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/HelloSO3.dir/build.make examples/CMakeFiles/HelloSO3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=1,2 "Built target HelloSO3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=1,2 "Built target HelloSO3"
 .PHONY : examples/CMakeFiles/HelloSO3.dir/all
 
 # Build rule for subdir invocation for target.
 examples/CMakeFiles/HelloSO3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/CMakeFiles/HelloSO3.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles 0
 .PHONY : examples/CMakeFiles/HelloSO3.dir/rule
 
 # Convenience name for target.
@@ -601,7 +601,7 @@ HelloSO3: examples/CMakeFiles/HelloSO3.dir/rule
 # codegen rule for target.
 examples/CMakeFiles/HelloSO3.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/HelloSO3.dir/build.make examples/CMakeFiles/HelloSO3.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/ORB_SLAM3/Thirdparty/Sophus/build/CMakeFiles --progress-num=1,2 "Finished codegen for target HelloSO3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/cwr/SLAM_LOFTR/Thirdparty/Sophus/build/CMakeFiles --progress-num=1,2 "Finished codegen for target HelloSO3"
 .PHONY : examples/CMakeFiles/HelloSO3.dir/codegen
 
 # clean rule for target.

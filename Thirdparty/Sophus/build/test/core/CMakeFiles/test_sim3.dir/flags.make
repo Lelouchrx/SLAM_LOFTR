@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/cwr/ORB_SLAM3/Thirdparty/Sophus -isystem /usr/include/eigen3
+CXX_INCLUDES = -I/home/cwr/SLAM_LOFTR/Thirdparty/Sophus -isystem /usr/include/eigen3
 
 CXX_FLAGS =  -Wall -Werror -Wextra -std=c++11 -Wno-deprecated-declarations -ftemplate-backtrace-limit=0 -O3 -std=gnu++11
 

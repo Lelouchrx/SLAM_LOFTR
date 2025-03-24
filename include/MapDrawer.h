@@ -32,16 +32,18 @@ namespace ORB_SLAM3
 {
 
 class Settings;
+class Tracking;
 
 class MapDrawer
 {
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
-    MapDrawer(Atlas* pAtlas, const string &strSettingPath, Settings* settings);
+    MapDrawer(Atlas* pAtlas, Tracking* pTracker, const string &strSettingPath, Settings* settings);
 
     void newParameterLoader(Settings* settings);
 
     Atlas* mpAtlas;
+    Tracking* mpTracker;
 
     void DrawMapPoints();
     void DrawKeyFrames(const bool bDrawKF, const bool bDrawGraph, const bool bDrawInertialGraph, const bool bDrawOptLba);
@@ -49,6 +51,8 @@ public:
     void SetCurrentCameraPose(const Sophus::SE3f &Tcw);
     void SetReferenceKeyFrame(KeyFrame *pKF);
     void GetCurrentOpenGLCameraMatrix(pangolin::OpenGlMatrix &M, pangolin::OpenGlMatrix &MOw);
+
+    void SetGenerateDenseCloud(bool generateDenseCloud);
 
 private:
 
@@ -60,6 +64,8 @@ private:
     float mPointSize;
     float mCameraSize;
     float mCameraLineWidth;
+
+    bool mGenerateDenseCloud = false;
 
     Sophus::SE3f mCameraPose;
 

@@ -124,6 +124,28 @@ namespace ORB_SLAM3 {
         }
     }
 
+    template<>
+    bool Settings::readParameter<bool>(cv::FileStorage& fSettings, const std::string& name, bool& found, const bool required) {
+        cv::FileNode node = fSettings[name];
+        if (node.empty()) {
+            if (required) {
+                std::cerr << name << " required parameter does not exist, aborting..." << std::endl;
+                exit(-1);
+            } else {
+                std::cerr << name << " optional parameter does not exist..." << std::endl;
+                found = false;
+                return false; // 默认值
+            }
+        } else if (!node.isInt() && !node.isReal()) {
+            std::cerr << name << " parameter must be anx integer or real number, aborting..." << std::endl;
+            exit(-1);
+        } else {
+            found = true;
+            int value = node; // 将 cv::FileNode 转换为 int
+            return (value != 0); 
+        }
+    }
+
     Settings::Settings(const std::string &configFile, const int& sensor) :
     bNeedToUndistort_(false), bNeedToRectify_(false), bNeedToResize1_(false), bNeedToResize2_(false) {
         sensor_ = sensor;
@@ -474,9 +496,12 @@ namespace ORB_SLAM3 {
         viewPointZ_ = readParameter<float>(fSettings,"Viewer.ViewpointZ",found);
         viewPointF_ = readParameter<float>(fSettings,"Viewer.ViewpointF",found);
         imageViewerScale_ = readParameter<float>(fSettings,"Viewer.imageViewScale",found,false);
-
-         if(!found)
+        
+        if(!found)
             imageViewerScale_ = 1.0f;
+
+        generateDenseCloud_ = readParameter<bool>(fSettings, "Viewer.GenerateDenseCloud", found, false);
+
     }
 
     void Settings::readLoadAndSave(cv::FileStorage &fSettings) {
