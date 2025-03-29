@@ -378,6 +378,10 @@ namespace ORB_SLAM3 {
 
             b_ = Tlr_.translation().norm();
             bf_ = b_ * calibration1_->getParameter(0);
+
+            // dense Mapping
+            Q = readParameter<cv::Mat>(fSettings,"Stereo.Q",found);
+            cout << "\t-Loaded camera 2" << endl;
         }
 
         thDepth_ = readParameter<float>(fSettings,"Stereo.ThDepth",found);
@@ -496,11 +500,9 @@ namespace ORB_SLAM3 {
         viewPointZ_ = readParameter<float>(fSettings,"Viewer.ViewpointZ",found);
         viewPointF_ = readParameter<float>(fSettings,"Viewer.ViewpointF",found);
         imageViewerScale_ = readParameter<float>(fSettings,"Viewer.imageViewScale",found,false);
-        
+
         if(!found)
             imageViewerScale_ = 1.0f;
-
-        generateDenseCloud_ = readParameter<bool>(fSettings, "Viewer.GenerateDenseCloud", found, false);
 
     }
 

@@ -69,3 +69,19 @@ Viewer.ViewpointY: -100.0
 Viewer.ViewpointZ: -0.1
 Viewer.ViewpointF: 2000.0
 Viewer.GenerateDenseCloud: 1
+
+Stereo.Q: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: d
+   data: [1.0, 0.0, 0.0, -607.1928, 
+          0.0, 1.0, 0.0, -185.2157, 
+          0.0, 0.0, 0.0, 718.856, 
+          0.0, 0.0, -1.8615, 0.0]
+
+PointCloudMapping.Resolution: 0.1 # voxel filter
+PointCloudMapping.MeanK: 20.0  # outlier filter
+PointCloudMapping.StdThresh: 0.5 # outlier filter
+PointCloudMapping.Unit: 1.0 # mm(1000) or m(1) 
+PointCloudMapping.mindisp: 1.0 
+PointCloudMapping.maxdisp: 128.0

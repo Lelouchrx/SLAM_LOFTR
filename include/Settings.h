@@ -111,7 +111,6 @@ namespace ORB_SLAM3 {
         float viewPointZ() {return viewPointZ_;}
         float viewPointF() {return viewPointF_;}
         float imageViewerScale() {return imageViewerScale_;}
-        bool generateDenseCloud() {return generateDenseCloud_;}
 
         std::string atlasLoadFile() {return sLoadFrom_;}
         std::string atlasSaveFile() {return sSaveto_;}
@@ -185,6 +184,9 @@ namespace ORB_SLAM3 {
         cv::Mat M1l_, M2l_;
         cv::Mat M1r_, M2r_;
 
+        // dense Mapping
+        cv::Mat Q;
+
         /*
          * Inertial stuff
          */
@@ -218,7 +220,6 @@ namespace ORB_SLAM3 {
         float cameraLineWidth_;
         float viewPointX_, viewPointY_, viewPointZ_, viewPointF_;
         float imageViewerScale_;
-        bool generateDenseCloud_; //是否生成稠密点云
 
         /*
          * Save & load maps

@@ -28,13 +28,14 @@
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/filters/statistical_outlier_removal.h>
 #include "Tracking.h"
+#include <pcl/registration/icp.h>
 
 namespace ORB_SLAM3
 {
 extern int pre_num = 0;
 
-MapDrawer::MapDrawer(Atlas* pAtlas, Tracking* pTracker, const string &strSettingPath, Settings* settings)
-    : mpAtlas(pAtlas), mpTracker(pTracker)
+MapDrawer::MapDrawer(Atlas* pAtlas, const string &strSettingPath, Settings* settings)
+    : mpAtlas(pAtlas)
 {
     if (settings) {
         newParameterLoader(settings);
@@ -134,140 +135,60 @@ bool MapDrawer::ParseViewerParamFile(cv::FileStorage &fSettings)
     return !b_miss_params;
 }
 
-void MapDrawer::SetGenerateDenseCloud(bool generateDenseCloud) {
-    mGenerateDenseCloud = generateDenseCloud;
-}
 
 void MapDrawer::DrawMapPoints()
 {
-
     Map* pActiveMap = mpAtlas->GetCurrentMap();
     if (!pActiveMap)
         return;
 
-    if (mGenerateDenseCloud) {
-        // 获取当前关键帧
-        KeyFrame* pKF = mpTracker->mCurrentFrame.mpReferenceKF;
-        if (!pKF)
-            return;
+    const vector<MapPoint*> &vpMPs = pActiveMap->GetAllMapPoints();
+    const vector<MapPoint*> &vpRefMPs = pActiveMap->GetReferenceMapPoints();
 
-        // 获取相机内参和基线
-        float fx = pKF->fx;
-        float fy = pKF->fy;
-        float cx = pKF->cx;
-        float cy = pKF->cy;
-        float baseline = pKF->mbf / fx;
+    set<MapPoint*> spRefMPs(vpRefMPs.begin(), vpRefMPs.end());
 
-        // 新建一个点云
-        pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZI>());
-        cloud->is_dense = false;
+    if (vpMPs.empty())
+        return;
 
-        // 获取关键帧的关键点和深度信息
-        const std::vector<cv::KeyPoint>& mvKeys = pKF->mvKeys;
-        const std::vector<float>& mvDepth = pKF->mvDepth;
+    glPointSize(mPointSize);
+    glBegin(GL_POINTS);
+    glColor3f(0.0, 0.0, 0.0);
 
-        // 遍历关键点生成点云
-        for (size_t i = 0; i < mvKeys.size(); i++) {
-            // 获取关键点的深度
-            float depth = mvDepth[i];
-            if (depth <= 0.0f)
-                continue;
-
-            // 获取关键点的像素坐标
-            float u = mvKeys[i].pt.x;
-            float v = mvKeys[i].pt.y;
-
-            // 将像素坐标转换为3D点
-            Eigen::Vector3f point;
-            point[2] = depth;
-            point[0] = (u - cx) * point[2] / fx;
-            point[1] = (v - cy) * point[2] / fy;
-
-            // 将点转换到世界坐标系
-            Sophus::SE3f Tcw = pKF->GetPose();
-            Eigen::Vector3f pointWorld = Tcw * point;
-
-            // 添加到点云
-            pcl::PointXYZI p;
-            p.x = pointWorld[0];
-            p.y = pointWorld[1];
-            p.z = pointWorld[2];
-            p.intensity = 255; // 灰度值（这里设置为固定值，可以根据需要调整）
-            cloud->points.push_back(p);
-        }
-
-        // 点云滤波
-        pcl::PointCloud<pcl::PointXYZI>::Ptr filteredCloud(new pcl::PointCloud<pcl::PointXYZI>);
-
-        // 统计滤波去除离群点
-        pcl::StatisticalOutlierRemoval<pcl::PointXYZI> statistical_filter;
-        statistical_filter.setMeanK(50);
-        statistical_filter.setStddevMulThresh(1.0);
-        statistical_filter.setInputCloud(cloud);
-        statistical_filter.filter(*filteredCloud);
-
-        // 体素滤波下采样
-        pcl::VoxelGrid<pcl::PointXYZI> voxel_filter;
-        voxel_filter.setLeafSize(0.03f, 0.03f, 0.03f); // 设置体素大小
-        voxel_filter.setInputCloud(filteredCloud);
-        voxel_filter.filter(*cloud);
-
-        // 保存点云
-        if (!cloud->points.empty()) {
-            std::string filename = "dense_map.pcd";
-            pcl::io::savePCDFileBinary(filename, *cloud);
-            std::cerr << "Saved " << cloud->points.size() << " data points to " << filename << std::endl;
-        }
-    } else {
-        // 稀疏点云代码...
-        const vector<MapPoint*> &vpMPs = pActiveMap->GetAllMapPoints();
-        const vector<MapPoint*> &vpRefMPs = pActiveMap->GetReferenceMapPoints();
-
-        set<MapPoint*> spRefMPs(vpRefMPs.begin(), vpRefMPs.end());
-
-        if (vpMPs.empty())
-            return;
-
-        glPointSize(mPointSize);
-        glBegin(GL_POINTS);
-        glColor3f(0.0, 0.0, 0.0);
-
-        for (size_t i = 0, iend = vpMPs.size(); i < iend; i++) {
-            if (vpMPs[i]->isBad() || spRefMPs.count(vpMPs[i]))
-                continue;
-            Eigen::Matrix<float, 3, 1> pos = vpMPs[i]->GetWorldPos();
-            glVertex3f(pos(0), pos(1), pos(2));
-        }
-        glEnd();
-
-        glPointSize(mPointSize);
-        glBegin(GL_POINTS);
-        glColor3f(1.0, 0.0, 0.0);
-
-        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>());
-        cloud->is_dense = false;
-
-        for (set<MapPoint*>::iterator sit = spRefMPs.begin(), send = spRefMPs.end(); sit != send; sit++) {
-            if ((*sit)->isBad())
-                continue;
-            Eigen::Matrix<float, 3, 1> pos = (*sit)->GetWorldPos();
-            glVertex3f(pos(0), pos(1), pos(2));
-
-            pcl::PointXYZ point;
-            point.x = pos(0);
-            point.y = pos(1);
-            point.z = pos(2);
-            cloud->points.push_back(point);
-        }
-        if (!cloud->points.empty()) {
-            if (cloud->points.size()) {
-                pcl::io::savePCDFileBinary("map_points.pcd", *cloud);
-                std::cerr << "Saved " << cloud->points.size() << " data points to map_points.pcd." << std::endl;
-            }
-        }
-
-        glEnd();
+    for (size_t i = 0, iend = vpMPs.size(); i < iend; i++) {
+        if (vpMPs[i]->isBad() || spRefMPs.count(vpMPs[i]))
+            continue;
+        Eigen::Matrix<float, 3, 1> pos = vpMPs[i]->GetWorldPos();
+        glVertex3f(pos(0), pos(1), pos(2));
     }
+    glEnd();
+
+    glPointSize(mPointSize);
+    glBegin(GL_POINTS);
+    glColor3f(1.0, 0.0, 0.0);
+
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>());
+    cloud->is_dense = false;
+
+    for (set<MapPoint*>::iterator sit = spRefMPs.begin(), send = spRefMPs.end(); sit != send; sit++) {
+        if ((*sit)->isBad())
+            continue;
+        Eigen::Matrix<float, 3, 1> pos = (*sit)->GetWorldPos();
+        glVertex3f(pos(0), pos(1), pos(2));
+
+        pcl::PointXYZ point;
+        point.x = pos(0);
+        point.y = pos(1);
+        point.z = pos(2);
+        cloud->points.push_back(point);
+    }
+    if (!cloud->points.empty()) {
+        if (cloud->points.size()) {
+            pcl::io::savePCDFileBinary("map_points.pcd", *cloud);
+            std::cerr << "Saved " << cloud->points.size() << " data points to map_points.pcd." << std::endl;
+        }
+    }
+
+    glEnd();
 }
 
 void MapDrawer::DrawKeyFrames(const bool bDrawKF, const bool bDrawGraph, const bool bDrawInertialGraph, const bool bDrawOptLba)
@@ -559,4 +480,5 @@ void MapDrawer::GetCurrentOpenGLCameraMatrix(pangolin::OpenGlMatrix &M, pangolin
     MOw.m[13] = Twc(1,3);
     MOw.m[14] = Twc(2,3);
 }
+
 } //namespace ORB_SLAM

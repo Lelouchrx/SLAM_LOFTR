@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.10)
 project(ORB_SLAM3)
 
 IF(NOT CMAKE_BUILD_TYPE)
@@ -37,6 +37,9 @@ find_package(OpenCV 4.4)
 
 MESSAGE("OPENCV VERSION:")
 MESSAGE(${OpenCV_VERSION})
+
+cmake_policy(SET CMP0167 NEW)
+find_package(Boost REQUIRED COMPONENTS filesystem program_options)
 
 find_package(Eigen3 3.1.0 REQUIRED)
 find_package(Pangolin REQUIRED)
@@ -84,6 +87,8 @@ src/GeometricTools.cc
 src/TwoViewReconstruction.cc
 src/Config.cc
 src/Settings.cc
+src/DenseMapping.cc
+src/StereoMatch.cc
 include/System.h
 include/Tracking.h
 include/LocalMapping.h
@@ -113,7 +118,10 @@ include/GeometricTools.h
 include/TwoViewReconstruction.h
 include/SerializationUtils.h
 include/Config.h
-include/Settings.h)
+include/Settings.h
+include/DenseMapping.h
+include/StereoMatch.h
+)
 
 add_subdirectory(Thirdparty/g2o)
 
@@ -124,6 +132,7 @@ ${Pangolin_LIBRARIES}
 ${PCL_LIBRARIES}
 ${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
 ${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.so
+${PROJECT_SOURCE_DIR}/Thirdparty/elas/lib/libelas.so
 -lboost_serialization
 -lcrypto
 )

@@ -32,6 +32,7 @@
 #include <thread>
 #include <mutex>
 #include "Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h"
+#include "DenseMapping.h"
 
 namespace ORB_SLAM3
 {
@@ -243,6 +244,11 @@ protected:
 #ifdef REGISTER_LOOP
     string mstrFolderLoop;
 #endif
+
+    // 新增成员变量
+    std::thread* mpThreadDML;
+    DenseMapping* mpDenseMapping;
+    bool mabIsUpdating;
 };
 
 } //namespace ORB_SLAM

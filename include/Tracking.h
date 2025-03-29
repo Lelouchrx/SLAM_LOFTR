@@ -36,6 +36,7 @@
 #include "System.h"
 #include "ImuTypes.h"
 #include "Settings.h"
+#include "DenseMapping.h"
 
 #include "GeometricCamera.h"
 
@@ -52,14 +53,17 @@ class LocalMapping;
 class LoopClosing;
 class System;
 class Settings;
+class DenseMapping;
 
 class Tracking
 {  
 
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+    // Tracking(System* pSys, ORBVocabulary* pVoc, FrameDrawer* pFrameDrawer, MapDrawer* pMapDrawer, Atlas* pAtlas,
+    //          KeyFrameDatabase* pKFDB, const string &strSettingPath, const int sensor, Settings* settings, const string &_nameSeq=std::string());
     Tracking(System* pSys, ORBVocabulary* pVoc, FrameDrawer* pFrameDrawer, MapDrawer* pMapDrawer, Atlas* pAtlas,
-             KeyFrameDatabase* pKFDB, const string &strSettingPath, const int sensor, Settings* settings, const string &_nameSeq=std::string());
+             KeyFrameDatabase* pKFDB, const string &strSettingPath, const int sensor, shared_ptr<DenseMapping> pDenseMapping, Settings* settings, const string &_nameSeq=std::string());
 
     ~Tracking();
 
@@ -69,7 +73,9 @@ public:
     bool ParseIMUParamFile(cv::FileStorage &fSettings);
 
     // Preprocess the input and call Track(). Extract features and performs stereo matching.
+    // dense Mapping
     Sophus::SE3f GrabImageStereo(const cv::Mat &imRectLeft,const cv::Mat &imRectRight, const double &timestamp, string filename);
+    Sophus::SE3f GrabImageStereo(const cv::Mat &imRectLeft,const cv::Mat &imRectRight, const cv::Mat &imDisp,const double &timestamp, string filename);
     Sophus::SE3f GrabImageRGBD(const cv::Mat &imRGB,const cv::Mat &imD, const double &timestamp, string filename);
     Sophus::SE3f GrabImageMonocular(const cv::Mat &im, const double &timestamp, string filename);
 
@@ -138,7 +144,15 @@ public:
     Frame mCurrentFrame;
     Frame mLastFrame;
 
+    //dense Mapping
     cv::Mat mImGray;
+    cv::Mat mImColor;
+    cv::Mat mImDepth;
+
+    // stereo
+    cv::Mat mImRight_Stereo;
+    cv::Mat disp;
+    cv::Mat Q;
 
     // Initialization Variables (Monocular)
     std::vector<int> mvIniLastMatches;
@@ -285,6 +299,9 @@ protected:
 
     //Atlas
     Atlas* mpAtlas;
+
+    //DenseMapping
+    shared_ptr<DenseMapping> mpDenseMapping;
 
     //Calibration matrix
     cv::Mat mK;

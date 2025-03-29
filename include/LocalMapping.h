@@ -26,6 +26,7 @@
 #include "Tracking.h"
 #include "KeyFrameDatabase.h"
 #include "Settings.h"
+#include "DenseMapping.h"
 
 #include <mutex>
 
@@ -129,6 +130,12 @@ public:
     int nLBA_exec;
     int nLBA_abort;
 #endif
+
+    // 新增稠密建图接口
+    void SetDenseMapping(shared_ptr<DenseMapping> pDenseMapping) {
+        mpDenseMapping = pDenseMapping;
+    }
+
 protected:
 
     bool CheckNewKeyFrames();
@@ -195,7 +202,10 @@ protected:
     //DEBUG
     ofstream f_lm;
 
-    };
+    // 新增成员变量
+    shared_ptr<DenseMapping> mpDenseMapping;
+
+};
 
 } //namespace ORB_SLAM
 

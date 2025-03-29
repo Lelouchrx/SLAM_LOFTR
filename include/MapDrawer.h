@@ -38,12 +38,11 @@ class MapDrawer
 {
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
-    MapDrawer(Atlas* pAtlas, Tracking* pTracker, const string &strSettingPath, Settings* settings);
+    MapDrawer(Atlas* pAtlas, const string &strSettingPath, Settings* settings);
 
     void newParameterLoader(Settings* settings);
 
     Atlas* mpAtlas;
-    Tracking* mpTracker;
 
     void DrawMapPoints();
     void DrawKeyFrames(const bool bDrawKF, const bool bDrawGraph, const bool bDrawInertialGraph, const bool bDrawOptLba);
@@ -53,6 +52,7 @@ public:
     void GetCurrentOpenGLCameraMatrix(pangolin::OpenGlMatrix &M, pangolin::OpenGlMatrix &MOw);
 
     void SetGenerateDenseCloud(bool generateDenseCloud);
+
 
 private:
 
@@ -66,10 +66,12 @@ private:
     float mCameraLineWidth;
 
     bool mGenerateDenseCloud = false;
+    bool mFirstFrame = true;
 
     Sophus::SE3f mCameraPose;
 
     std::mutex mMutexCamera;
+    std::mutex mMutexDense;
 
     float mfFrameColors[6][3] = {{0.0f, 0.0f, 1.0f},
                                 {0.8f, 0.4f, 1.0f},

@@ -72,7 +72,6 @@ void Viewer::newParameterLoader(Settings *settings) {
     mViewpointY = settings->viewPointY();
     mViewpointZ = settings->viewPointZ();
     mViewpointF = settings->viewPointF();
-    mGenerateDesnseCloud = settings->generateDenseCloud();
 }
 
 bool Viewer::ParseViewerParamFile(cv::FileStorage &fSettings)
@@ -311,7 +310,6 @@ void Viewer::Run()
         d_cam.Activate(s_cam);
         glClearColor(1.0f,1.0f,1.0f,1.0f);
         mpMapDrawer->DrawCurrentCamera(Twc);
-        mpMapDrawer->SetGenerateDenseCloud(mGenerateDesnseCloud);
         if(menuShowKeyFrames || menuShowGraph || menuShowInertialGraph || menuShowOptLba)
             mpMapDrawer->DrawKeyFrames(menuShowKeyFrames,menuShowGraph, menuShowInertialGraph, menuShowOptLba);
         if(menuShowPoints)

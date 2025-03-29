@@ -247,7 +247,12 @@ void LocalMapping::Run()
             vdKFCullingSync_ms.push_back(timeKFCulling_ms);
 #endif
 
+            // Step 10 将当前帧加入到闭环检测队列中
             mpLoopCloser->InsertKeyFrame(mpCurrentKeyFrame);
+            // 新增：将当前关键帧加入稠密建图队列
+            // if(mpDenseMapping) {
+            //     mpDenseMapping->InsertKeyFrame(mpCurrentKeyFrame);
+            // }
 
 #ifdef REGISTER_TIMES
             std::chrono::steady_clock::time_point time_EndLocalMap = std::chrono::steady_clock::now();

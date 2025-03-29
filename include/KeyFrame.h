@@ -498,7 +498,7 @@ protected:
     // Mutex
     std::mutex mMutexPose; // for pose, velocity and biases
     std::mutex mMutexConnections;
-    std::mutex mMutexFeatures;
+    mutable std::mutex mMutexFeatures;
     std::mutex mMutexMap;
 
 public:
@@ -536,6 +536,26 @@ public:
         cout << "Point distribution in KeyFrame: left-> " << left << " --- right-> " << right << endl;
     }
 
+    // 双目图像操作
+    void SetStereoImages(const cv::Mat& left, const cv::Mat& right) {
+        std::unique_lock<std::mutex> lock(mMutexFeatures);
+        left.copyTo(mLeftImage);
+        right.copyTo(mRightImage);
+    }
+    
+    cv::Mat GetLeftImage() const {
+        std::unique_lock<std::mutex> lock(mMutexFeatures); 
+        return mLeftImage.clone();
+    }
+    
+    cv::Mat GetRightImage() const{
+        std::unique_lock<std::mutex> lock(mMutexFeatures); 
+        return mRightImage.clone();
+    }
+
+private:
+    // 双目原始图像
+    cv::Mat mLeftImage, mRightImage;
 
 };
 

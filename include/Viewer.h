@@ -82,8 +82,6 @@ private:
 
     float mViewpointX, mViewpointY, mViewpointZ, mViewpointF;
 
-    bool mGenerateDesnseCloud;
-
     bool CheckFinish();
     void SetFinish();
     bool mbFinishRequested;

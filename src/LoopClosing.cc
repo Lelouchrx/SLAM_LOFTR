@@ -1191,6 +1191,12 @@ void LoopClosing::CorrectLoop()
 
     mpAtlas->InformNewBigChange();
 
+    // 在本质图优化后添加
+    // mpDenseMapping->mabIsUpdating = false;  // 强制让已有的更新停止，进行新的
+    // mpThreadDML = new thread(&DenseMapping::UpdateCloud, mpDenseMapping, mpCurrentKF->GetMap());
+    // mpThreadDML->detach();
+    // cout << "Dense map updated!" << endl;
+
     // Add loop edge
     mpLoopMatchedKF->AddLoopEdge(mpCurrentKF);
     mpCurrentKF->AddLoopEdge(mpLoopMatchedKF);
@@ -1776,6 +1782,12 @@ void LoopClosing::MergeLocal()
     pMergeMap->IncreaseChangeIndex();
 
     mpAtlas->RemoveBadMaps();
+
+    // // 在全局BA后添加
+    // mpDenseMapping->mabIsUpdating = false;  // 强制让已有的更新停止，进行新的
+    // mpThreadDML = new thread(&DenseMapping::UpdateCloud, mpDenseMapping, pMergeMap);
+    // mpThreadDML->detach();
+    cout << "Dense map updated after merge!" << endl;
 
 }
 
@@ -2503,11 +2515,18 @@ void LoopClosing::RunGlobalBundleAdjustment(Map* pActiveMap, unsigned long nLoop
             vdFGBATotal_ms.push_back(timeFGBA);
 #endif
             Verbose::PrintMess("Map updated!", Verbose::VERBOSITY_NORMAL);
+            // 在更新地图后添加
+            // mpDenseMapping->mabIsUpdating = false;  // 强制让已有的更新停止，进行新的
+            // mpThreadDML = new thread(&DenseMapping::UpdateCloud, mpDenseMapping, pActiveMap);
+            // mpThreadDML->detach();
+            cout << "Dense map updated after GBA!" << endl;
         }
 
         mbFinishedGBA = true;
         mbRunningGBA = false;
     }
+
+
 }
 
 void LoopClosing::RequestFinish()
@@ -2537,3 +2556,4 @@ bool LoopClosing::isFinished()
 
 
 } //namespace ORB_SLAM
+

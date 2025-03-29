@@ -41,12 +41,13 @@ namespace ORB_SLAM3
 {
 
 
-Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer, MapDrawer *pMapDrawer, Atlas *pAtlas, KeyFrameDatabase* pKFDB, const string &strSettingPath, const int sensor, Settings* settings, const string &_nameSeq):
+Tracking::Tracking(System *pSys, ORBVocabulary* pVoc, FrameDrawer *pFrameDrawer, MapDrawer *pMapDrawer, Atlas *pAtlas, KeyFrameDatabase* pKFDB, const string &strSettingPath, const int sensor, shared_ptr<DenseMapping> pDenseMapping, Settings* settings, const string &_nameSeq):
     mState(NO_IMAGES_YET), mSensor(sensor), mTrackedFr(0), mbStep(false),
     mbOnlyTracking(false), mbMapUpdated(false), mbVO(false), mpORBVocabulary(pVoc), mpKeyFrameDB(pKFDB),
-    mbReadyToInitializate(false), mpSystem(pSys), mpViewer(NULL), bStepByStep(false),
+    mbReadyToInitializate(false), mpSystem(pSys), mpViewer(static_cast<Viewer*>(NULL)), bStepByStep(false),
     mpFrameDrawer(pFrameDrawer), mpMapDrawer(pMapDrawer), mpAtlas(pAtlas), mnLastRelocFrameId(0), time_recently_lost(5.0),
-    mnInitialFrameId(0), mbCreatedMap(false), mnFirstFrameId(0), mpCamera2(nullptr), mpLastKeyFrame(static_cast<KeyFrame*>(NULL))
+    mnInitialFrameId(0), mbCreatedMap(false), mnFirstFrameId(0), mpCamera2(nullptr), mpLastKeyFrame(static_cast<KeyFrame*>(NULL)),
+    mbInitWith3KFs(false), mnNumDataset(0), mpDenseMapping(pDenseMapping)
 {
     // Load camera parameters from settings file
     if(settings){
@@ -1053,9 +1054,13 @@ bool Tracking::ParseCamParamFile(cv::FileStorage &fSettings)
 
             node = fSettings["Tlr"];
             cv::Mat cvTlr;
+            cv::FileNodeIterator it = node.begin(), it_end = node.end();
             if(!node.empty())
             {
-                cvTlr = node.mat();
+                for (int i = 0; it != it_end; ++it, i++) {
+                    cvTlr.at<float>(i / 4, i % 4) = *it;  // 手动填充矩阵
+                }
+                //cvTlr = node.mat();
                 if(cvTlr.rows != 3 || cvTlr.cols != 4)
                 {
                     std::cerr << "*Tlr matrix have to be a 3x4 transformation matrix*" << std::endl;
@@ -1453,11 +1458,13 @@ bool Tracking::GetStepByStep()
 
 Sophus::SE3f Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat &imRectRight, const double &timestamp, string filename)
 {
-    //cout << "GrabImageStereo" << endl;
-
     mImGray = imRectLeft;
     cv::Mat imGrayRight = imRectRight;
     mImRight = imRectRight;
+
+    // ge   t the dense mapping data
+    mImColor = imRectLeft.clone();
+    mImRight_Stereo = imRectRight.clone();
 
     if(mImGray.channels()==3)
     {
@@ -1516,11 +1523,80 @@ Sophus::SE3f Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat 
     return mCurrentFrame.GetPose();
 }
 
+Sophus::SE3f Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat &imRectRight, const cv::Mat &imDisp, const double &timestamp, string filename)
+{
+    mImGray = imRectLeft;
+    cv::Mat imGrayRight = imRectRight;
+    mImRight = imRectRight;
+
+    // dense Mapping
+    mImColor = imRectLeft.clone();
+    mImRight_Stereo = imRectRight.clone();
+    disp = imDisp.clone();
+
+    if(mImGray.channels()==3)
+    {
+        //cout << "Image with 3 channels" << endl;
+        if(mbRGB)
+        {
+            cvtColor(mImGray,mImGray,cv::COLOR_RGB2GRAY);
+            cvtColor(imGrayRight,imGrayRight,cv::COLOR_RGB2GRAY);
+        }
+        else
+        {
+            cvtColor(mImGray,mImGray,cv::COLOR_BGR2GRAY);
+            cvtColor(imGrayRight,imGrayRight,cv::COLOR_BGR2GRAY);
+        }
+    }
+    else if(mImGray.channels()==4)
+    {
+        //cout << "Image with 4 channels" << endl;
+        if(mbRGB)
+        {
+            cvtColor(mImGray,mImGray,cv::COLOR_RGBA2GRAY);
+            cvtColor(imGrayRight,imGrayRight,cv::COLOR_RGBA2GRAY);
+        }
+        else
+        {
+            cvtColor(mImGray,mImGray,cv::COLOR_BGRA2GRAY);
+            cvtColor(imGrayRight,imGrayRight,cv::COLOR_BGRA2GRAY);
+        }
+    }
+
+    //cout << "Incoming frame creation" << endl;
+
+    if (mSensor == System::STEREO && !mpCamera2)
+        mCurrentFrame = Frame(mImGray,imGrayRight,timestamp,mpORBextractorLeft,mpORBextractorRight,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth,mpCamera);
+    else if(mSensor == System::STEREO && mpCamera2)
+        mCurrentFrame = Frame(mImGray,imGrayRight,timestamp,mpORBextractorLeft,mpORBextractorRight,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth,mpCamera,mpCamera2,mTlr);
+    else if(mSensor == System::IMU_STEREO && !mpCamera2)
+        mCurrentFrame = Frame(mImGray,imGrayRight,timestamp,mpORBextractorLeft,mpORBextractorRight,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth,mpCamera,&mLastFrame,*mpImuCalib);
+    else if(mSensor == System::IMU_STEREO && mpCamera2)
+        mCurrentFrame = Frame(mImGray,imGrayRight,timestamp,mpORBextractorLeft,mpORBextractorRight,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth,mpCamera,mpCamera2,mTlr,&mLastFrame,*mpImuCalib);
+
+    //cout << "Incoming frame ended" << endl;
+
+    mCurrentFrame.mNameFile = filename;
+    mCurrentFrame.mnDataset = mnNumDataset;
+
+#ifdef REGISTER_TIMES
+    vdORBExtract_ms.push_back(mCurrentFrame.mTimeORB_Ext);
+    vdStereoMatch_ms.push_back(mCurrentFrame.mTimeStereoMatch);
+#endif
+
+    //cout << "Tracking start" << endl;
+    Track();
+    //cout << "Tracking end" << endl;
+
+    return mCurrentFrame.GetPose();
+}
 
 Sophus::SE3f Tracking::GrabImageRGBD(const cv::Mat &imRGB,const cv::Mat &imD, const double &timestamp, string filename)
 {
     mImGray = imRGB;
     cv::Mat imDepth = imD;
+    mImColor = imRGB.clone();
+    mImDepth = imD.clone();
 
     if(mImGray.channels()==3)
     {
@@ -3335,6 +3411,29 @@ void Tracking::CreateNewKeyFrame()
     mpLocalMapper->InsertKeyFrame(pKF);
 
     mpLocalMapper->SetNotStop(false);
+
+    // 稠密建图 是否是关键帧
+    if(mpSystem->densemapping)
+    {
+        if(mSensor == System::RGBD || mSensor == System::IMU_RGBD)
+        {
+            // 插入RGBD关键帧
+            mpDenseMapping->InsertKeyFrame(pKF, mImColor, mImDepth);
+        }
+        else if(mSensor == System::STEREO || mSensor == System::IMU_STEREO)
+        {
+            if(disp.empty())
+            {
+                // 如果没有视差图，使用左右图像
+                mpDenseMapping->InsertKeyFrame(pKF, mImColor, mImRight_Stereo, Q);
+            }
+            else
+            {
+                // 如果有视差图，使用视差图
+                mpDenseMapping->InsertKeyFrame(pKF, mImColor, mImRight_Stereo, disp, Q);
+            }
+        }
+    }
 
     mnLastKeyFrameId = mCurrentFrame.mnId;
     mpLastKeyFrame = pKF;

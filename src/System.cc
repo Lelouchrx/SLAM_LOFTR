@@ -50,7 +50,6 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
     "under certain conditions. See LICENSE.txt." << endl << endl;
 
     cout << "Input sensor was set to: ";
-
     if(mSensor==MONOCULAR)
         cout << "Monocular" << endl;
     else if(mSensor==STEREO)
@@ -167,12 +166,6 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
         loadedAtlas = true;
 
         mpAtlas->CreateNewMap();
-
-        //clock_t timeElapsed = clock() - start;
-        //unsigned msElapsed = timeElapsed / (CLOCKS_PER_SEC / 1000);
-        //cout << "Binary file read in " << msElapsed << " ms" << endl;
-
-        //usleep(10*1000*1000);
     }
 
 
@@ -181,16 +174,33 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
 
     //Create Drawers. These are used by the Viewer
     mpFrameDrawer = new FrameDrawer(mpAtlas);
-    // mpMapDrawer = new MapDrawer(mpAtlas, strSettingsFile, settings_);
-    mpMapDrawer = new MapDrawer(mpAtlas, mpTracker, strSettingsFile, settings_); // 添加 mpTracker 参数
+    mpMapDrawer = new MapDrawer(mpAtlas, strSettingsFile, settings_);
 
-
+    // 稠密重建
+    // 对STEREO和RGBD相机重建
+    if(mSensor == IMU_STEREO || mSensor == STEREO || mSensor == IMU_RGBD || mSensor == RGBD){
+        // 获取参数
+        float resolution = fsSettings["PointCloudMapping.Resolution"];
+        float meank = fsSettings["PointCloudMapping.MeanK"];
+        float stdthresh = fsSettings["PointCloudMapping.StdThresh"];
+        float unit = fsSettings["PointCloudMapping.Unit"];
+        cv::FileNode node_mindisp = fsSettings["PointCloudMapping.mindisp"];
+        cv::FileNode node_maxdisp = fsSettings["PointCloudMapping.maxdisp"];
+        if(node_maxdisp.empty() || node_maxdisp.empty()){
+            // 提供视差图
+            mpDenseMapping = std::make_shared<DenseMapping>(resolution,meank,stdthresh,unit);
+        } else{
+            // 不提供视差图,使用视差算法
+            mpDenseMapping= std::make_shared<DenseMapping>(resolution,meank,stdthresh,unit,float(node_mindisp),float(node_maxdisp));
+        }
+        
+    }
+    
     //Initialize the Tracking thread
     //(it will live in the main thread of execution, the one that called this constructor)
     cout << "Seq. Name: " << strSequence << endl;
-    mpTracker = new Tracking(this, mpVocabulary, mpFrameDrawer, mpMapDrawer,
-                             mpAtlas, mpKeyFrameDatabase, strSettingsFile, mSensor, settings_, strSequence);
-
+    mpTracker = new Tracking(this, mpVocabulary, mpFrameDrawer, mpMapDrawer, mpAtlas, mpKeyFrameDatabase, 
+                            strSettingsFile, mSensor, mpDenseMapping, settings_, strSequence);
     //Initialize the Local Mapping thread and launch
     mpLocalMapper = new LocalMapping(this, mpAtlas, mSensor==MONOCULAR || mSensor==IMU_MONOCULAR,
                                      mSensor==IMU_MONOCULAR || mSensor==IMU_STEREO || mSensor==IMU_RGBD, strSequence);
@@ -240,6 +250,7 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
     Verbose::SetTh(Verbose::VERBOSITY_QUIET);
 
 }
+
 
 Sophus::SE3f System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, const double &timestamp, const vector<IMU::Point>& vImuMeas, string filename)
 {
@@ -314,6 +325,92 @@ Sophus::SE3f System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, 
 
     // std::cout << "start GrabImageStereo" << std::endl;
     Sophus::SE3f Tcw = mpTracker->GrabImageStereo(imLeftToFeed,imRightToFeed,timestamp,filename);
+
+    // std::cout << "out grabber" << std::endl;
+
+    unique_lock<mutex> lock2(mMutexState);
+    mTrackingState = mpTracker->mState;
+    mTrackedMapPoints = mpTracker->mCurrentFrame.mvpMapPoints;
+    mTrackedKeyPointsUn = mpTracker->mCurrentFrame.mvKeysUn;
+
+    return Tcw;
+}
+
+//dense Mapping
+Sophus::SE3f System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight,const cv::Mat& imDisp,const double &timestamp, const vector<IMU::Point>& vImuMeas, string filename)
+{
+    if(mSensor!=STEREO && mSensor!=IMU_STEREO)
+    {
+        cerr << "ERROR: you called TrackStereo but input sensor was not set to Stereo nor Stereo-Inertial." << endl;
+        exit(-1);
+    }
+
+    cv::Mat imLeftToFeed, imRightToFeed;
+    if(settings_ && settings_->needToRectify()){
+        cv::Mat M1l = settings_->M1l();
+        cv::Mat M2l = settings_->M2l();
+        cv::Mat M1r = settings_->M1r();
+        cv::Mat M2r = settings_->M2r();
+
+        cv::remap(imLeft, imLeftToFeed, M1l, M2l, cv::INTER_LINEAR);
+        cv::remap(imRight, imRightToFeed, M1r, M2r, cv::INTER_LINEAR);
+    }
+    else if(settings_ && settings_->needToResize()){
+        cv::resize(imLeft,imLeftToFeed,settings_->newImSize());
+        cv::resize(imRight,imRightToFeed,settings_->newImSize());
+    }
+    else{
+        imLeftToFeed = imLeft.clone();
+        imRightToFeed = imRight.clone();
+    }
+
+    // Check mode change
+    {
+        unique_lock<mutex> lock(mMutexMode);
+        if(mbActivateLocalizationMode)
+        {
+            mpLocalMapper->RequestStop();
+
+            // Wait until Local Mapping has effectively stopped
+            while(!mpLocalMapper->isStopped())
+            {
+                usleep(1000);
+            }
+
+            mpTracker->InformOnlyTracking(true);
+            mbActivateLocalizationMode = false;
+        }
+        if(mbDeactivateLocalizationMode)
+        {
+            mpTracker->InformOnlyTracking(false);
+            mpLocalMapper->Release();
+            mbDeactivateLocalizationMode = false;
+        }
+    }
+
+    // Check reset
+    {
+        unique_lock<mutex> lock(mMutexReset);
+        if(mbReset)
+        {
+            mpTracker->Reset();
+            mbReset = false;
+            mbResetActiveMap = false;
+        }
+        else if(mbResetActiveMap)
+        {
+            mpTracker->ResetActiveMap();
+            mbResetActiveMap = false;
+        }
+    }
+
+    if (mSensor == System::IMU_STEREO)
+        for(size_t i_imu = 0; i_imu < vImuMeas.size(); i_imu++)
+            mpTracker->GrabImuData(vImuMeas[i_imu]);
+
+    // std::cout << "start GrabImageStereo" << std::endl;
+    // dense Mapping
+    Sophus::SE3f Tcw = mpTracker->GrabImageStereo(imLeftToFeed,imRightToFeed,imDisp,timestamp,filename);
 
     // std::cout << "out grabber" << std::endl;
 
@@ -523,6 +620,8 @@ void System::Shutdown()
 
     mpLocalMapper->RequestFinish();
     mpLoopCloser->RequestFinish();
+    mpDenseMapping->shutdown();
+    
     /*if(mpViewer)
     {
         mpViewer->RequestFinish();

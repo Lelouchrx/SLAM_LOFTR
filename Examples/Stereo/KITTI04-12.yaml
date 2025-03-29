@@ -67,3 +67,9 @@ Viewer.ViewpointY: -100.0
 Viewer.ViewpointZ: -0.1
 Viewer.ViewpointF: 2000.0
 
+PointCloudMapping.Resolution: 0.1 # voxel filter
+PointCloudMapping.MeanK: 20.0  # outlier filter
+PointCloudMapping.StdThresh: 0.5 # outlier filter
+PointCloudMapping.Unit: 1.0 # mm(1000) or m(1) 
+PointCloudMapping.mindisp: 1.0 
+PointCloudMapping.maxdisp: 128.0
